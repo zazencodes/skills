@@ -16,11 +16,19 @@
 
 ## Adding or Removing a Skill
 
-Update `skills/`, the `skills` array in `.claude-plugin/plugin.json`, and the README table together. Bump `version` in `plugin.json` on every release, since Claude Code uses it to decide when installed users get an update.
+Update `skills/`, the `skills` array in `.claude-plugin/plugin.json`, and the README table together.
+
+## Changesets and Releases
+
+- Every commit that changes what users get (a skill, its scripts or references, `openai.yaml`, the plugin manifest) includes a changeset in `.changeset/`. Repo-only changes (`AGENTS.md`, CI, `README.md` wording) need none.
+- Write it by hand as `.changeset/<short-slug>.md`; `.changeset/README.md` shows the format. Start the description with the skill name (`gemini-web-research: ...`) and say what changed for the user, in a sentence or two.
+- Bump: `patch` for fixes and wording, `minor` for a new skill or new behaviour, `major` when a skill is removed or renamed.
+- Never edit `CHANGELOG.md` or a `version` field by hand. On each push to `main`, `.github/workflows/release.yml` opens a "chore: version skills" pull request that writes the changelog and bumps `package.json` and `plugin.json` together. Merging it tags `vX.Y.Z` and creates the GitHub release. Merge it only when the user asks for a release.
 
 ## Validation
 
 ```bash
 claude plugin validate . --strict
+npm run check-plugin-version
 npx skills@latest add . --list
 ```
