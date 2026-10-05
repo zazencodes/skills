@@ -2,10 +2,9 @@
 """Generate or edit images with the codex CLI's built-in image tool.
 
 `codex exec` has no "write the image to this path" flag. It drops what it
-generates in `$CODEX_HOME/generated_images/<session id>/` and also embeds it in
-the session's rollout transcript. This script runs one non-interactive turn,
-recovers the image from whichever of those two places has it, and writes it
-where you asked.
+generates in `$CODEX_HOME/generated_images/<session id>/`. This script runs
+one non-interactive turn, collects only that session's saved images, and writes
+them where you asked with extensions matching their actual format.
 
 Usage:
     codex_image.py --prompt "a red bicycle in the rain" --output bike.png
@@ -18,8 +17,6 @@ Only the standard library is required; --fit additionally needs Pillow.
 from __future__ import annotations
 
 import argparse
-import base64
-import datetime as dt
 import json
 import os
 import re
@@ -48,7 +45,6 @@ ASPECT_NOTE = """Generate the image at a {aspect} aspect ratio, at the largest s
 VARIANTS_NOTE = """Produce {count} distinct variants of this image in this same turn, each from its own image-tool call. Vary the interpretation between them; do not return near-duplicates."""
 
 IMAGE_SUFFIXES = (".png", ".jpg", ".jpeg", ".webp")
-PATH_RE = re.compile(r"(/[^\s\"']+\.(?:png|jpe?g|webp))")
 
 MAGIC = {
     b"\x89PNG\r\n\x1a\n": "png",
@@ -63,10 +59,6 @@ def codex_bin() -> str:
 def codex_home() -> Path:
     home = os.environ.get("CODEX_HOME")
     return Path(home) if home else Path.home() / ".codex"
-
-
-def sessions_dir() -> Path:
-    return codex_home() / "sessions"
 
 
 def generated_images_dir() -> Path:
@@ -170,131 +162,10 @@ def run_codex(prompt: str, images: list[Path], sandbox: str, reasoning: str,
     return start, session_id
 
 
-def _session_started_at(rollout: Path) -> float | None:
-    """Epoch seconds from the transcript's opening `session_meta` record."""
-    try:
-        with rollout.open(encoding="utf-8") as fh:
-            first = fh.readline()
-    except OSError:
-        return None
-    try:
-        payload = json.loads(first).get("payload") or {}
-        stamp = payload.get("timestamp")
-        if not isinstance(stamp, str):
-            return None
-        return dt.datetime.fromisoformat(stamp.replace("Z", "+00:00")).timestamp()
-    except (json.JSONDecodeError, AttributeError, ValueError):
-        return None
-
-
-def find_rollout(start: float, session_id: str | None) -> Path | None:
-    """Locate this run's transcript.
-
-    Prefer an exact match on the session id printed by codex: picking the
-    most-recently-touched transcript is wrong whenever another codex session is
-    running concurrently. Fall back to transcripts whose own session started
-    after this run did, which still excludes older concurrent sessions.
-    """
-    root = sessions_dir()
-    if not root.is_dir():
-        return None
-    if session_id:
-        exact = list(root.glob(f"**/rollout-*{session_id}.jsonl"))
-        if exact:
-            return max(exact, key=lambda p: p.stat().st_mtime)
-    # 1s of slack: filesystem timestamps can lag the moment we recorded.
-    candidates = [p for p in root.glob("**/rollout-*.jsonl")
-                  if p.stat().st_mtime >= start - 1]
-    fresh = [p for p in candidates
-             if (t := _session_started_at(p)) is not None and t >= start - 5]
-    pool = fresh or candidates
-    if not pool:
-        return None
-    return max(pool, key=lambda p: p.stat().st_mtime)
-
-
-# --------------------------------------------------------------------------- #
-# Decoding the image back out of the rollout transcript
-# --------------------------------------------------------------------------- #
-def _image_ref(value) -> str | None:
-    """Find a data: URL or an on-disk image path anywhere in a transcript value."""
-    if isinstance(value, str):
-        if value.startswith("data:image/") and ";base64," in value:
-            return value
-        match = PATH_RE.search(value)
-        if match and Path(match.group(1)).is_file():
-            return match.group(1)
-        return None
-    if isinstance(value, list):
-        for item in value:
-            found = _image_ref(item)
-            if found:
-                return found
-        return None
-    if isinstance(value, dict):
-        if value.get("type") == "input_image":
-            url = value.get("image_url")
-            if isinstance(url, dict):
-                url = url.get("url")
-            found = _image_ref(url)
-            if found:
-                return found
-        for key in ("output", "content", "result", "image_url", "url", "path", "file_path"):
-            if key in value:
-                found = _image_ref(value.get(key))
-                if found:
-                    return found
-    return None
-
-
-def extract_image(rollout: Path) -> bytes | None:
-    """Return the last generated image in a rollout transcript.
-
-    Two transcript schemas are in the wild, so support both:
-      * older CLIs put raw base64 in the image-generation event's `result`;
-      * current CLIs (0.14x+) emit an `input_image` data URL in the
-        `function_call_output` that follows `image_generation_end`.
-    Either way the LAST image in the file is the one this run produced.
-    """
-    latest: bytes | None = None
-    try:
-        handle = rollout.open(encoding="utf-8")
-    except OSError as exc:
-        sys.exit(f"ERROR: cannot read rollout transcript {rollout}: {exc}")
-    with handle as fh:
-        for line in fh:
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                event = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            payload = event.get("payload")
-            if not isinstance(payload, dict):
-                payload = event if isinstance(event, dict) else None
-            if not isinstance(payload, dict):
-                continue
-            kind = payload.get("type")
-            if kind in ("image_generation_call", "image_generation_end"):
-                result = payload.get("result")
-                if isinstance(result, str) and result:
-                    try:
-                        latest = base64.b64decode(result)
-                    except Exception:
-                        pass
-            elif kind in ("function_call_output", "custom_tool_call_output"):
-                ref = _image_ref(payload.get("output"))
-                if ref:
-                    latest = _load_ref(ref) or latest
-    return latest
-
-
 def collect_from_session_dir(session_id: str | None, start: float) -> list[bytes]:
     """Images codex saved under `$CODEX_HOME/generated_images/<session id>/`.
 
-    This is the direct path and the one to trust; the transcript decode below is
-    only a fallback for CLI versions that do not write these files.
+    Recovery is scoped to the exact session ID returned by this run.
     """
     if not session_id:
         return []
@@ -306,16 +177,6 @@ def collect_from_session_dir(session_id: str | None, start: float) -> list[bytes
              and p.stat().st_mtime >= start - 1]
     files.sort(key=lambda p: p.stat().st_mtime)
     return [p.read_bytes() for p in files]
-
-
-def _load_ref(ref: str) -> bytes | None:
-    if ref.startswith("data:image/"):
-        try:
-            return base64.b64decode(ref.split(";base64,", 1)[1])
-        except Exception:
-            return None
-    path = Path(ref)
-    return path.read_bytes() if path.is_file() else None
 
 
 # --------------------------------------------------------------------------- #
@@ -440,27 +301,17 @@ def main() -> None:
     start, session_id = run_codex(prompt, images, args.sandbox, args.reasoning,
                                   args.model, args.timeout, args.quiet)
 
-    source = "generated_images"
-    rollout: Path | None = None
+    if session_id is None:
+        sys.exit("ERROR: codex exec did not report a session ID. "
+                 "Cannot identify this run's generated images. No file was written.")
     payloads = collect_from_session_dir(session_id, start)
     if not payloads:
-        source = "rollout"
-        rollout = find_rollout(start, session_id)
-        if rollout is None:
-            sys.exit("ERROR: codex exited 0 but left neither a saved image under "
-                     f"{generated_images_dir()} nor a rollout transcript under "
-                     f"{sessions_dir()}. Cannot recover an image.")
-        raw = extract_image(rollout)
-        if raw is not None:
-            payloads = [raw]
-    if not payloads:
-        where = f" (transcript: {rollout})" if rollout else ""
-        sys.exit(f"ERROR: the codex run produced no image{where}.\n"
-                 "The model most likely answered in text instead of calling its image "
-                 "tool. Retry; if it keeps happening, make the prompt more explicitly a "
-                 "picture request or raise --reasoning. No file was written.")
+        sys.exit(f"ERROR: the codex run produced no image in "
+                 f"{generated_images_dir() / session_id}.\n"
+                 "No file was written. Check that the image tool ran and saved "
+                 "its output in this session's generated_images directory.")
 
-    written: list[dict] = []
+    pending: list[tuple[Path, bytes, str]] = []
     for index, raw in enumerate(payloads, start=1):
         kind = sniff(raw)
         if kind is None:
@@ -469,18 +320,22 @@ def main() -> None:
             raw = fit_to_size(raw, args.fit, args.fit_mode, args.fit_background)
             kind = "png"
         out = args.output
-        if out.suffix.lower() not in IMAGE_SUFFIXES:
+        extension = out.suffix.lower()
+        if extension != f".{kind}" and not (kind == "jpg" and extension == ".jpeg"):
             out = out.with_suffix(f".{kind}")
         if index > 1:                          # extra variants sit beside the first
             out = out.with_name(f"{out.stem}-{index}{out.suffix}")
+        pending.append((out, raw, kind))
+
+    written: list[dict] = []
+    for out, raw, kind in pending:
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_bytes(raw)
         written.append({"path": str(out), "bytes": len(raw), "format": kind})
 
     if args.json:
-        print(json.dumps({"images": written, "source": source,
-                          "session_id": session_id,
-                          "rollout": str(rollout) if rollout else None}, indent=2))
+        print(json.dumps({"images": written, "source": "generated_images",
+                          "session_id": session_id}, indent=2))
     else:
         for item in written:
             print(f"Wrote {item['path']} ({item['bytes']:,} bytes, {item['format']})")

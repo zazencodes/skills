@@ -13,9 +13,10 @@ tool, so any agent on this machine can generate images through it with no
 `OPENAI_API_KEY` and no other image service.
 
 `codex exec` has no "write the image to this path" flag: it saves what it
-generates to `$CODEX_HOME/generated_images/<session id>/` and embeds it in the
-session transcript. `scripts/codex_image.py` handles that round trip — it runs
-one non-interactive turn, recovers the image, and writes it where you asked.
+generates to `$CODEX_HOME/generated_images/<session id>/`.
+`scripts/codex_image.py` runs one non-interactive turn and collects only images
+saved under that run's exact session ID. If the session ID or its saved images
+are missing, it fails without writing output.
 
 **Always go through the script.** A hand-rolled `codex exec "draw me a cat"` very
 often returns prose or an ImageMagick drawing instead of a generated image, and
@@ -48,7 +49,9 @@ python3 scripts/codex_image.py \
 ```
 
 A run takes roughly 30–60 seconds. On success the script prints each path it
-wrote; on failure it exits non-zero and writes nothing.
+wrote. Output extensions follow the actual image format: PNG bytes requested
+as `bike.jpg` are saved as `bike.png`. `--fit` always produces PNG. On
+generation or recovery failure it exits non-zero and writes nothing.
 
 ## Common invocations
 
