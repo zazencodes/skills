@@ -1,0 +1,3 @@
+interface:
+  display_name: "Git Commit Conventions"
+  short_description: "Split work into small commits with one-line messages"

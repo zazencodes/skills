@@ -1,0 +1,3 @@
+interface:
+  display_name: "Gemini Web Research"
+  short_description: "Delegate web research to Gemini sessions in tmux"

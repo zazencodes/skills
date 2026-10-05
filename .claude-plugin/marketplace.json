@@ -1,0 +1,17 @@
+{
+  "name": "zazencodes",
+  "owner": {
+    "name": "Alexander Galea",
+    "url": "https://zazencodes.com"
+  },
+  "description": "ZazenCodes agent skills, as an installable Claude Code plugin.",
+  "plugins": [
+    {
+      "name": "zazencodes-skills",
+      "source": "./",
+      "description": "Alex Galea's agent skills: Codex image generation, Gemini web research, git commit conventions and lean AGENTS.md files.",
+      "category": "productivity",
+      "keywords": ["skills", "codex", "gemini", "git", "agents-md"]
+    }
+  ]
+}

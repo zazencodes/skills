@@ -1,0 +1,3 @@
+interface:
+  display_name: "Init AGENTS.md"
+  short_description: "Write a lean, repo-specific AGENTS.md for agents"
