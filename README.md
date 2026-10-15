@@ -11,10 +11,6 @@
 
 Agent skills I use every day with Claude Code, Codex and other coding agents. I wrote them for my own work, and they follow the open [Agent Skills](https://agentskills.io) format, so they work in any agent that supports it.
 
-<p align="center">
-  <img src="docs/assets/hero.jpg" alt="ZazenCodes Skills" width="100%">
-</p>
-
 ## Installation
 
 There are two ways to install. Pick one: installing both gives you every skill twice.
@@ -66,6 +62,18 @@ Update later with `npx skills update`.
 | [`git-commit-conventions`](skills/git-commit-conventions/SKILL.md) | Splits work into one commit per batch of changes, with short one-line messages and your own git authorship. | git |
 | [`init-agents-md`](skills/init-agents-md/SKILL.md) | Writes a short, repo-specific `AGENTS.md` and symlinks `CLAUDE.md` to it. | |
 | [`random-number-generator`](skills/random-number-generator/SKILL.md) | Generates random integers, floats, weighted choices, shuffles and samples, plus secure integers and hex tokens, with a Python standard-library script. | Python 3 |
+
+<p align="center">
+  <a href="https://zazencodes.com/?utm_source=github&utm_medium=referral&utm_campaign=skills">
+    <img
+      src="docs/assets/zazencodes-banner.png"
+      alt="ZazenCodes — Engineering for the Agentic Era"
+      width="100%"
+    >
+  </a>
+  <br>
+  Created by <a href="https://zazencodes.com/">ZazenCodes</a>
+</p>
 
 ## License
 
