@@ -1,5 +1,11 @@
 # zazencodes-skills
 
+## 0.2.0
+
+### Minor Changes
+
+- [`6a309b7`](https://github.com/zazencodes/skills/commit/6a309b7d1458ba2ff1df0d316c3e296da862323a) Thanks [@zazencodes](https://github.com/zazencodes)! - random-number-generator: new skill that generates random integers, floats, weighted choices, shuffles, samples, secure integers and secure hex tokens with a Python standard-library script. It moves here from zazencodes/random-number-skills.
+
 ## 0.1.1
 
 ### Patch Changes
