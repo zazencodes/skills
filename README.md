@@ -1,7 +1,7 @@
 # ZazenCodes Skills
 
 <p align="center">
-  <a href="https://skills.sh/zazencodes/skills"><img src="https://img.shields.io/badge/skills.sh-install-blue" alt="Install with skills.sh"></a>
+  <a href="https://skills.sh/zazencodes/skills"><img src="https://skills.sh/b/zazencodes/skills" alt="skills.sh"></a>
   <a href="https://github.com/zazencodes/skills/releases/latest"><img src="https://img.shields.io/github/v/release/zazencodes/skills?label=version" alt="Latest release version"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="License: MIT"></a>
   <img src="https://img.shields.io/badge/Claude%20Code-ready-D97757?logo=claude&logoColor=white" alt="Claude Code ready">
