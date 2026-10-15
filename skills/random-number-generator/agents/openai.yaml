@@ -1,0 +1,3 @@
+interface:
+  display_name: "Random Number Generator"
+  short_description: "Generate random numbers, choices, shuffles and secure tokens"

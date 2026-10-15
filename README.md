@@ -65,6 +65,7 @@ Update later with `npx skills update`.
 | [`gemini-web-research`](skills/gemini-web-research/SKILL.md) | Delegates web research to Gemini sessions running in tmux panes beside you, then follows up and synthesizes their cited reports. | [`agy`](https://antigravity.google), tmux |
 | [`git-commit-conventions`](skills/git-commit-conventions/SKILL.md) | Splits work into one commit per batch of changes, with short one-line messages and your own git authorship. | git |
 | [`init-agents-md`](skills/init-agents-md/SKILL.md) | Writes a short, repo-specific `AGENTS.md` and symlinks `CLAUDE.md` to it. | |
+| [`random-number-generator`](skills/random-number-generator/SKILL.md) | Generates random integers, floats, weighted choices, shuffles and samples, plus secure integers and hex tokens, with a Python standard-library script. | Python 3 |
 
 ## License
 

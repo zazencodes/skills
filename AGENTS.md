@@ -13,6 +13,8 @@
 - `skills/<skill-name>/agents/openai.yaml` holds Codex UI metadata: `display_name` and a `short_description` of 25 to 64 characters.
 - `.claude-plugin/plugin.json` lists every skill in its `skills` array; `.claude-plugin/marketplace.json` makes the repo its own plugin marketplace.
 - `README.md` lists every skill with its install commands.
+- `tests/` holds unittest coverage for bundled scripts.
+- `random-number-generator` mentions passwords only as "random password candidate" or "password entropy"; never say it accepts, stores, transforms, validates or repeats existing credentials, so the Snyk Agent Scan stays clear of W007.
 
 ## Adding or Removing a Skill
 
@@ -31,4 +33,5 @@ Update `skills/`, the `skills` array in `.claude-plugin/plugin.json`, and the RE
 claude plugin validate . --strict
 npm run check-plugin-version
 npx skills@latest add . --list
+python3 -m unittest discover -s tests
 ```
