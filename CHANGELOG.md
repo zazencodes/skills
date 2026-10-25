@@ -1,5 +1,13 @@
 # zazencodes-skills
 
+## 0.2.0
+
+### Minor Changes
+
+- [`b93f542`](https://github.com/zazencodes/skills/commit/b93f54287aed6cf90565132b4825f104ee5a8d33) Thanks [@zazencodes](https://github.com/zazencodes)! - gemini-web-research: size research to the task. The launcher now takes a `low`, `medium` or `high` effort that picks the matching Gemini 3.8 Flash model, sessions default to one, and each prompt carries a stop condition so workers stop once the answer is good enough.
+
+- [`6a309b7`](https://github.com/zazencodes/skills/commit/6a309b7d1458ba2ff1df0d316c3e296da862323a) Thanks [@zazencodes](https://github.com/zazencodes)! - random-number-generator: new skill that generates random integers, floats, weighted choices, shuffles, samples, secure integers and secure hex tokens with a Python standard-library script. It moves here from zazencodes/random-number-skills.
+
 ## 0.1.1
 
 ### Patch Changes
