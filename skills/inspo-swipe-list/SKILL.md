@@ -5,7 +5,7 @@ description: The user's inspo swipe list of saved design inspiration. Use when t
 
 # Inspo Swipe List
 
-The list lives at `/Users/alex/obsidian/AzathHouse/Areas/Inspo Swipe List.md`
+The list lives at `~/obsidian/AzathHouse/Areas/Inspo Swipe List.md`
 in the user's Obsidian vault. It holds things they found online that inspire them:
 mostly visual design, also how a video, tool or app looks and feels. Entries
 are newest first. It is growing, so always read the current file.
@@ -51,6 +51,6 @@ it):
 
    Use today's date. Write the title yourself if they didn't give one. Ask for
    the reason only if they gave none and the link doesn't make it obvious.
-2. Commit and push in the vault (`git -C /Users/alex/obsidian/AzathHouse`),
+2. Commit and push in the vault (`git -C ~/obsidian/AzathHouse`),
    staging only this file, following the vault's `AGENTS.md` commit
    convention.

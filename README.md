@@ -68,7 +68,7 @@ Update later with `npx skills update`.
 
 Some skills point at my own setup. Change these after installing:
 
-- `inspo-swipe-list`: set the list's path (`/Users/alex/obsidian/AzathHouse/...`) to your own file.
+- `inspo-swipe-list`: set the list's path (`~/obsidian/AzathHouse/...`) to your own file.
 
 <p align="center">
   <a href="https://zazencodes.com/?utm_source=github&utm_medium=referral&utm_campaign=skills">
