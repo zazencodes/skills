@@ -64,6 +64,12 @@ Update later with `npx skills update`.
 | [`inspo-swipe-list`](skills/inspo-swipe-list/SKILL.md) | Draws design inspiration from a swipe list of things you've saved, asks which entries to use, and adds new finds to it. | An Obsidian vault with the list (path set in the skill) |
 | [`random-number-generator`](skills/random-number-generator/SKILL.md) | Generates random integers, floats, weighted choices, shuffles and samples, plus secure integers and hex tokens, with a Python standard-library script. | Python 3 |
 
+## Setup notes
+
+Some skills point at my own setup. Change these after installing:
+
+- `inspo-swipe-list`: set the list's path (`/Users/alex/obsidian/AzathHouse/...`) to your own file.
+
 <p align="center">
   <a href="https://zazencodes.com/?utm_source=github&utm_medium=referral&utm_campaign=skills">
     <img
