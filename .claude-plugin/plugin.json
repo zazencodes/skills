@@ -1,6 +1,6 @@
 {
   "name": "zazencodes-skills",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Alex Galea's agent skills: Codex image generation, Gemini web research, git commit conventions, lean AGENTS.md files, a design inspiration swipe list and random number generation.",
   "author": {
     "name": "Alexander Galea",
