@@ -1,5 +1,19 @@
 # zazencodes-skills
 
+## 0.3.0
+
+### Minor Changes
+
+- [`3ccd756`](https://github.com/zazencodes/skills/commit/3ccd756ab5120f6a6665e467f30c41f0f721e435) Thanks [@zazencodes](https://github.com/zazencodes)! - inspo-swipe-list: new skill that draws on a saved design inspiration swipe list, asks which entries to use, and adds new finds to it.
+
+- [`a6d4ce0`](https://github.com/zazencodes/skills/commit/a6d4ce0b466486ee75ec69e51c1560c13d02c1a7) Thanks [@zazencodes](https://github.com/zazencodes)! - tldr: new skill for brief, structured summaries of outcomes, decisions, open questions and next steps. Invoke with TLDR, /tldr or $tldr to summarize the previous reply and enable separated TLDR footers for the session, with one-reply and stop controls.
+
+### Patch Changes
+
+- [`45c898e`](https://github.com/zazencodes/skills/commit/45c898e58730cd38c271d5fbbca8aafc59215d10) Thanks [@zazencodes](https://github.com/zazencodes)! - inspo-swipe-list: use a home-relative path for the swipe list.
+
+- [`7e0273d`](https://github.com/zazencodes/skills/commit/7e0273d8e1509c84f7b1a038766066d703e5f071) Thanks [@zazencodes](https://github.com/zazencodes)! - inspo-swipe-list: refer to the user instead of Alex.
+
 ## 0.2.0
 
 ### Minor Changes
