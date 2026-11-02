@@ -63,6 +63,7 @@ Update later with `npx skills update`.
 | [`init-agents-md`](skills/init-agents-md/SKILL.md) | Writes a short, repo-specific `AGENTS.md` and symlinks `CLAUDE.md` to it. | |
 | [`inspo-swipe-list`](skills/inspo-swipe-list/SKILL.md) | Draws design inspiration from a swipe list of things you've saved, asks which entries to use, and adds new finds to it. | An Obsidian vault with the list (path set in the skill) |
 | [`random-number-generator`](skills/random-number-generator/SKILL.md) | Generates random integers, floats, weighted choices, shuffles and samples, plus secure integers and hex tokens, with a Python standard-library script. | Python 3 |
+| [`tldr`](skills/tldr/SKILL.md) | Summarizes what matters in a few clear bullets and adds separated TLDR footers for the rest of the session. Invoke with `TLDR`, `/tldr`, or `$tldr`; say "just this once" for one reply or "stop TLDR" to turn it off. | |
 
 ## Setup notes
 
