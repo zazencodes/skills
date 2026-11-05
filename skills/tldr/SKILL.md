@@ -10,10 +10,10 @@ Give the user only what matters, in the fewest clear words. Keep decisions, unan
 ## Activation and duration
 
 - A bare `TLDR`, `TL;DR`, `/tldr`, or `$tldr` summarizes the immediately preceding assistant reply. Output only the TLDR section for that turn.
-- If the user names another message or topic, summarize that scope. Use earlier context only to clarify it.
+- If the user names another message or topic, summarize that scope. Use earlier context only to clarify it. Always answer these explicit requests, however short the source.
 - Any invocation enables TLDR mode for the rest of the conversation, unless the user limits it with wording such as "just this once."
-- "Use TLDR for this session" or an opening prompt invoking the skill enables session mode immediately. If there is a task, complete it and append its TLDR.
-- While mode is active, answer normally and append a TLDR to each substantive final reply. Progress updates and tool calls need no footer. Even a short final reply gets one; keep it tiny.
+- "Use TLDR for this session" or an opening prompt invoking the skill enables session mode immediately. If there is a task, complete it; its reply follows the footer rule below.
+- While mode is active, answer normally and append a TLDR to a final reply only when the reply is at least twice as long as the TLDR would be; otherwise omit the footer entirely. A TLDR must never be longer than the text above it. Progress updates and tool calls need no footer.
 - "Stop TLDR" or equivalent ends the mode. Explicit one-reply instructions take precedence for that reply.
 - A mention inside quoted text, code, or a discussion about creating this skill is context; activate when the user requests its use.
 
