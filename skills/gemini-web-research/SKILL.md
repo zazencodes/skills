@@ -5,53 +5,53 @@ description: Use when the user asks to delegate substantial web research to Gemi
 
 # Gemini Web Research
 
-Orchestrate web research through interactive `agy` sessions in tmux panes, then use their findings in the parent task. Invoke this skill only when the user asks to use Gemini or `agy` for research, including a clear request to delegate research to Gemini. Do not choose it merely because research is extensive.
+You are the research lead. Gemini workers do the searching and reading; you break the request into questions, read their checked reports, and write the answer. Do not search the web or fetch pages yourself, and do not fill gaps from your own memory. Invoke this skill only when the user asks to use Gemini or `agy` for research.
 
-## Roles
-
-You are the orchestrator; the `agy` sessions are workers. They do the searching, page reading and distilling. You decide what to ask, read their reports, and decide whether the answer is good enough. Do not run web searches or fetches yourself. If something needs checking, send it to a worker. Your context is for thinking and synthesis, not raw pages.
-
-## Size the research to the need
-
-Research only as much as the parent task needs. Before launching, decide:
-
-- **The decision or answer it feeds.** What will you or the user do with the result?
-- **The stop condition.** What does the report need to contain for you to proceed? Once that is met, stop, even if more could be learned.
-- **Sessions.** Default to one. Add a parallel session only for an area that is independent of the others and needs its own digging.
-- **Effort.** Pick per session:
-  - `low`: a few facts, a current value, a link, a quick check.
-  - `medium`: a comparison or summary across several sources.
-  - `high`: a contested, technical or poorly documented question where shallow results would mislead.
-
-Start at the lowest effort that could meet the stop condition. Escalate only when a report shows the question is harder than expected.
-
-## Workflow
-
-1. **Launch** the sessions you sized. Each prompt states the question, what the answer is for, the stop condition, and the expected report length. Tell the worker not to survey beyond that.
-2. **Read each report as it lands.** Check it against the stop condition.
-3. **Follow up only on gaps that matter** to the answer: a missing fact you need, a contradiction that changes the conclusion, or a claim too weakly sourced to act on. Do not follow up to make a sufficient answer more complete.
-4. **Synthesize** as soon as the stop condition is met.
-
-## Launch a session
-
-The user always works in tmux. Each session runs in a new pane so they can watch it:
+## How a round runs
 
 ```bash
-<this skill's directory>/scripts/agy-research.sh <low|medium|high> <scratch>/<area>-1.md 'Research <question>. This is for <purpose>. Stop once you can <stop condition>; do not research beyond it. Keep the report to <length>. Cite direct source URLs beside substantive claims. Distinguish publication dates from event dates. Flag uncertainty. Take no external actions and edit no files except the report. When finished, write the complete report in a single write to <scratch>/<area>-1.md.'
+python3 <this skill's directory>/scripts/gemini_research.py '<question 1>' '<question 2>' '<question 3>'
 ```
 
-The launcher splits the current pane, starts `agy -i` with the Gemini 3.8 Flash model and reasoning effort for the chosen level, prints `started in tmux pane %<id>` to stderr, waits until the report exists, then prints it. Run each launcher as its own background command, without redirecting stderr away, so every session notifies you separately when it finishes and its pane id stays in the output. Record which pane covers which area. If a model is unavailable, check `agy models` and update the launcher to the current Gemini Flash models.
+One call is one round. Each question becomes an independent Gemini 3.8 Flash job at high effort, all running in parallel. A round takes 3 to 6 minutes. Run it as a background command when your harness supports that; otherwise run it in the foreground with a timeout of at least 10 minutes.
 
-## Follow up in a session
+Each worker must search the web, read the pages it cites, and back every claim with a verbatim quote. The script then checks every job against its trace and prints one report per question:
 
-```bash
-<this skill's directory>/scripts/agy-followup.sh %<id> <scratch>/<area>-2.md 'Follow-up: <targeted question>. Write the complete answer in a single write to <scratch>/<area>-2.md.'
-```
+- **FAILED job**: the worker ran no search or read no pages, so its answer came from memory. Nothing from it is usable.
+- **[OK] claim**: the quote was found in a page the worker read. Usable as a fact.
+- **[FLAG] claim**: the URL was never read or the quote is not on the page. Not a fact.
+- **Unconfirmed**: things the worker could not find on any page it read.
 
-This types the prompt into the pane with `tmux send-keys`, waits for the new report, then prints it. The session keeps its context, so the follow-up can be short. The prompt must be a single line, and each follow-up needs a new report path. Run it in the background like a launch. Send follow-ups only to a session that has finished its last report. A follow-up runs at its session's effort; launch a new session to change effort.
+## Pick the tier
 
-Panes stay open after the turn; the user closes them. If a pane closes before its report is written, the script exits with an error: report it rather than silently switching research services.
+Before launching, write one line naming the tier and why. If you are torn between two tiers, pick the higher one. Use exactly these counts:
 
-## Use the result
+| Tier | When | Rounds × jobs |
+|---|---|---|
+| **Easy** | One fact or a few facts with an obvious authoritative source: a version, date, price, link, or "what is X". | 1 round × 2 jobs |
+| **Medium** | How something works, a comparison of a few options, or a summary across several sources. | 1 round × 3 jobs |
+| **Hard** | Contested, poorly documented, fast-moving or deeply technical; several linked unknowns; or the answer drives a costly decision. | 2 rounds × 3 jobs |
 
-Before repeating a claim the user will act on, make sure its source supports it. If the report's citation is weak or the claim is surprising, have a worker open the link and confirm. Return a synthesis with links, not raw Gemini reports.
+What the jobs cover:
+
+- **Easy**: job 1 asks the question directly. Job 2 asks for the same facts from a different angle, for example from the changelog or package registry instead of the docs, so the two answers check each other.
+- **Medium**: three different sub-questions that together answer the request.
+- **Hard, round 1**: three different sub-questions, like Medium.
+- **Hard, round 2**: written after you read round 1. One job on the most important gap or unconfirmed item. One job on a contradiction between jobs, or on a flagged claim the answer needs. One job that confirms the claim your conclusion rests on from a different source.
+
+## Write each question
+
+- **Self-contained.** The worker has none of your context. Name the thing fully and add what disambiguates it: a URL, the vendor, the version, the date range.
+- **One target per job.** No two jobs in a round cover the same ground.
+- **Ask for the specific facts you need**, not "everything about X". Never paste the user's whole request in as a question.
+
+## Read the results
+
+- State as fact only [OK] claims. A [FLAG] claim is a lead, not a fact.
+- Rerun a FAILED job once with the same question. If it fails again, report it as failed.
+- In an Easy round, compare the two jobs. If they disagree, the disagreement is a gap.
+- After an Easy or Medium round, if the answer still depends on a gap, a flagged claim or an unconfirmed item, run one more round of exactly one job aimed at it. After a Hard round 2, report remaining gaps as unconfirmed.
+
+## Answer
+
+Give a synthesis, not the raw reports. Link each fact to the URL its [OK] claim came from. Say plainly what stayed unconfirmed.
