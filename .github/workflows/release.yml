@@ -34,7 +34,7 @@ jobs:
         with:
           version: npm run version
           publish: npx changeset tag
-          commit: "chore: version skills"
-          title: "chore: version skills"
+          commit: "Version skills"
+          title: "Version skills"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
