@@ -1,5 +1,17 @@
 # ZazenCodes Skills
 
+Agent skills that I use every day.
+
+| Skill | What it does |
+| --- | --- |
+| [`codex-image-gen`](skills/codex-image-gen/SKILL.md) | Generates and edits images using your ChatGPT login. |
+| [`gemini-web-research`](skills/gemini-web-research/SKILL.md) | Runs parallel Gemini research jobs and verifies their findings. |
+| [`git-commit-conventions`](skills/git-commit-conventions/SKILL.md) | Makes focused commits with short messages and your git authorship. |
+| [`init-agents-md`](skills/init-agents-md/SKILL.md) | Writes a repo-specific `AGENTS.md` and links `CLAUDE.md` to it. |
+| [`inspo-swipe-list`](skills/inspo-swipe-list/SKILL.md) | Saves design inspiration and draws on your swipe list. |
+| [`random-number-generator`](skills/random-number-generator/SKILL.md) | Generates random numbers, picks, shuffles, samples, and secure tokens. |
+| [`tldr`](skills/tldr/SKILL.md) | Summarizes replies in a few clear bullets. |
+
 <p align="center">
   <a href="https://skills.sh/zazencodes/skills"><img src="https://skills.sh/b/zazencodes/skills" alt="skills.sh"></a>
   <a href="https://github.com/zazencodes/skills/releases/latest"><img src="https://img.shields.io/github/v/release/zazencodes/skills?label=version" alt="Latest release version"></a>
@@ -8,8 +20,6 @@
   <img src="https://img.shields.io/badge/Codex-ready-000000?logo=data:image/svg%2bxml;base64,PHN2ZyBmaWxsPSJ3aGl0ZSIgcm9sZT0iaW1nIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI%2BPHRpdGxlPk9wZW5BSTwvdGl0bGU%2BPHBhdGggZD0iTTIyLjI4MTkgOS44MjExYTUuOTg0NyA1Ljk4NDcgMCAwIDAtLjUxNTctNC45MTA4IDYuMDQ2MiA2LjA0NjIgMCAwIDAtNi41MDk4LTIuOUE2LjA2NTEgNi4wNjUxIDAgMCAwIDQuOTgwNyA0LjE4MThhNS45ODQ3IDUuOTg0NyAwIDAgMC0zLjk5NzcgMi45IDYuMDQ2MiA2LjA0NjIgMCAwIDAgLjc0MjcgNy4wOTY2IDUuOTggNS45OCAwIDAgMCAuNTExIDQuOTEwNyA2LjA1MSA2LjA1MSAwIDAgMCA2LjUxNDYgMi45MDAxQTUuOTg0NyA1Ljk4NDcgMCAwIDAgMTMuMjU5OSAyNGE2LjA1NTcgNi4wNTU3IDAgMCAwIDUuNzcxOC00LjIwNTggNS45ODk0IDUuOTg5NCAwIDAgMCAzLjk5NzctMi45MDAxIDYuMDU1NyA2LjA1NTcgMCAwIDAtLjc0NzUtNy4wNzI5em0tOS4wMjIgMTIuNjA4MWE0LjQ3NTUgNC40NzU1IDAgMCAxLTIuODc2NC0xLjA0MDhsLjE0MTktLjA4MDQgNC43NzgzLTIuNzU4MmEuNzk0OC43OTQ4IDAgMCAwIC4zOTI3LS42ODEzdi02LjczNjlsMi4wMiAxLjE2ODZhLjA3MS4wNzEgMCAwIDEgLjAzOC4wNTJ2NS41ODI2YTQuNTA0IDQuNTA0IDAgMCAxLTQuNDk0NSA0LjQ5NDR6bS05LjY2MDctNC4xMjU0YTQuNDcwOCA0LjQ3MDggMCAwIDEtLjUzNDYtMy4wMTM3bC4xNDIuMDg1MiA0Ljc4MyAyLjc1ODJhLjc3MTIuNzcxMiAwIDAgMCAuNzgwNiAwbDUuODQyOC0zLjM2ODV2Mi4zMzI0YS4wODA0LjA4MDQgMCAwIDEtLjAzMzIuMDYxNUw5Ljc0IDE5Ljk1MDJhNC40OTkyIDQuNDk5MiAwIDAgMS02LjE0MDgtMS42NDY0ek0yLjM0MDggNy44OTU2YTQuNDg1IDQuNDg1IDAgMCAxIDIuMzY1NS0xLjk3MjhWMTEuNmEuNzY2NC43NjY0IDAgMCAwIC4zODc5LjY3NjVsNS44MTQ0IDMuMzU0My0yLjAyMDEgMS4xNjg1YS4wNzU3LjA3NTcgMCAwIDEtLjA3MSAwbC00LjgzMDMtMi43ODY1QTQuNTA0IDQuNTA0IDAgMCAxIDIuMzQwOCA3Ljg3MnptMTYuNTk2MyAzLjg1NThMMTMuMTAzOCA4LjM2NCAxNS4xMTkyIDcuMmEuMDc1Ny4wNzU3IDAgMCAxIC4wNzEgMGw0LjgzMDMgMi43OTEzYTQuNDk0NCA0LjQ5NDQgMCAwIDEtLjY3NjUgOC4xMDQydi01LjY3NzJhLjc5Ljc5IDAgMCAwLS40MDctLjY2N3ptMi4wMTA3LTMuMDIzMWwtLjE0Mi0uMDg1Mi00Ljc3MzUtMi43ODE4YS43NzU5Ljc3NTkgMCAwIDAtLjc4NTQgMEw5LjQwOSA5LjIyOTdWNi44OTc0YS4wNjYyLjA2NjIgMCAwIDEgLjAyODQtLjA2MTVsNC44MzAzLTIuNzg2NmE0LjQ5OTIgNC40OTkyIDAgMCAxIDYuNjgwMiA0LjY2ek04LjMwNjUgMTIuODYzbC0yLjAyLTEuMTYzOGEuMDgwNC4wODA0IDAgMCAxLS4wMzgtLjA1NjdWNi4wNzQyYTQuNDk5MiA0LjQ5OTIgMCAwIDEgNy4zNzU3LTMuNDUzN2wtLjE0Mi4wODA1TDguNzA0IDUuNDU5YS43OTQ4Ljc5NDggMCAwIDAtLjM5MjcuNjgxM3ptMS4wOTc2LTIuMzY1NGwyLjYwMi0xLjQ5OTggMi42MDY5IDEuNDk5OHYyLjk5OTRsLTIuNTk3NCAxLjQ5OTctMi42MDY3LTEuNDk5N1oiLz48L3N2Zz4%3D" alt="Codex ready">
   <a href="https://zazencodes.com/"><img src="https://img.shields.io/badge/made%20by-ZazenCodes-black" alt="Made by ZazenCodes"></a>
 </p>
-
-Agent skills I use every day with Claude Code, Codex and other coding agents. I wrote them for my own work, and they follow the open [Agent Skills](https://agentskills.io) format, so they work in any agent that supports it.
 
 ## Installation
 
@@ -52,18 +62,6 @@ npx skills@latest add zazencodes/skills --skill <name>
 ```
 
 Update later with `npx skills update`.
-
-## Skills
-
-| Skill | What it does | Needs |
-| --- | --- | --- |
-| [`codex-image-gen`](skills/codex-image-gen/SKILL.md) | Generates and edits images through the Codex CLI's built-in image tool, using your ChatGPT login instead of an API key. | [`codex`](https://github.com/openai/codex), Python 3 |
-| [`gemini-web-research`](skills/gemini-web-research/SKILL.md) | Delegates web research to parallel Gemini jobs, checks every claim's quote against the pages each job read, and synthesizes the verified findings. | [`agy`](https://antigravity.google) |
-| [`git-commit-conventions`](skills/git-commit-conventions/SKILL.md) | Splits work into one commit per batch of changes, with short one-line messages and your own git authorship. | git |
-| [`init-agents-md`](skills/init-agents-md/SKILL.md) | Writes a short, repo-specific `AGENTS.md` and symlinks `CLAUDE.md` to it. | |
-| [`inspo-swipe-list`](skills/inspo-swipe-list/SKILL.md) | Draws design inspiration from a swipe list of things you've saved, asks which entries to use, and adds new finds to it. | An Obsidian vault with the list (path set in the skill) |
-| [`random-number-generator`](skills/random-number-generator/SKILL.md) | Generates random integers, floats, weighted choices, shuffles and samples, plus secure integers and hex tokens, with a Python standard-library script. | Python 3 |
-| [`tldr`](skills/tldr/SKILL.md) | Summarizes what matters in a few clear bullets and adds separated TLDR footers for the rest of the session. Invoke with `TLDR`, `/tldr`, or `$tldr`; say "just this once" for one reply or "stop TLDR" to turn it off. | |
 
 ## Setup notes
 
