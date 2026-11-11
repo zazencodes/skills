@@ -1,0 +1,32 @@
+---
+name: ascii-viz
+description: Use when the user invokes /ascii-viz or $ascii-viz, or asks for answers with ASCII diagrams, charts or visuals. Also applies to later replies in the conversation once active.
+---
+
+# ASCII Viz
+
+Answer with ASCII diagrams wherever a picture explains faster than prose: usage and quota bars, progress, timelines, flows between systems, before/after comparisons, option menus, architecture, and small status cards.
+
+## When to draw
+
+- Draw only the parts of a reply that benefit from it. Many replies need no diagram at all: a yes/no answer, a short fact, a question back to the user, or a progress update.
+- Never wrap ordinary sentences in boxes for decoration. One or two clear diagrams beat many small ones.
+- Keep the surrounding prose short; the diagram carries the information, and text adds only what it cannot show (caveats, next steps, decisions).
+- Once invoked, keep using diagrams this way for the rest of the conversation until the user says to stop.
+
+## How to draw
+
+- Put every diagram in a fenced code block so alignment survives.
+- Keep lines under about 72 characters so they fit a terminal.
+- Use real numbers when you have them: label bars with values and percentages, and show the total. Mark unknown values with `?` rather than inventing them.
+- Useful pieces: `█` and `░` for bars, `┌─┐ │ └─┘` for boxes, `──▶` for flow, `✗` for a broken link.
+
+## Example
+
+```
+  Credits     [██████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]  15.3%
+              49,178 used  ·  271,328 left  ·  320,506 total
+
+  Resets      Nov 11 ──────────────────────────▶ Nov 21
+              today          10 days left
+```

@@ -4,6 +4,7 @@ Agent skills that I use every day.
 
 | Skill | What it does |
 | --- | --- |
+| [`ascii-viz`](skills/ascii-viz/SKILL.md) | Answers with ASCII diagrams and charts where they help. |
 | [`codex-image-gen`](skills/codex-image-gen/SKILL.md) | Generates and edits images using your ChatGPT login. |
 | [`gemini-web-research`](skills/gemini-web-research/SKILL.md) | Runs parallel Gemini research jobs and verifies their findings. |
 | [`git-commit-conventions`](skills/git-commit-conventions/SKILL.md) | Makes focused commits with short messages and your git authorship. |
