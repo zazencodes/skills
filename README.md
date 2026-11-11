@@ -12,6 +12,7 @@ Agent skills that I use every day.
 
 | Skill | What it does |
 | --- | --- |
+| [`adr`](skills/adr/SKILL.md) | Reads and writes Architecture Decision Records in `docs/adr/`. |
 | [`ascii-viz`](skills/ascii-viz/SKILL.md) | Answers with ASCII diagrams and charts where they help. |
 | [`codex-image-gen`](skills/codex-image-gen/SKILL.md) | Generates and edits images using your ChatGPT login. |
 | [`gemini-web-research`](skills/gemini-web-research/SKILL.md) | Runs parallel Gemini research jobs and verifies their findings. |
