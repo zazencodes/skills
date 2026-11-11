@@ -1,5 +1,17 @@
 # zazencodes-skills
 
+## 0.4.0
+
+### Minor Changes
+
+- [`f74a981`](https://github.com/zazencodes/skills/commit/f74a9819823fd32c14dcc46bec4bf848ef00e23f) Thanks [@zazencodes](https://github.com/zazencodes)! - ascii-viz: new skill that answers with ASCII diagrams and charts, drawn only where a picture explains faster than prose.
+
+- [`68cd364`](https://github.com/zazencodes/skills/commit/68cd364f11092efbdb375d604589a09ed838883a) Thanks [@zazencodes](https://github.com/zazencodes)! - gemini-web-research: research now runs as parallel Gemini jobs instead of sessions in tmux panes, and tmux is no longer required. A script checks each job's trace and every claim's quote against the pages it read, and the skill picks how many jobs to run from how hard the question is.
+
+### Patch Changes
+
+- [`f099bbe`](https://github.com/zazencodes/skills/commit/f099bbe150596a060b23b90ac9f655ac2bc81bc2) Thanks [@zazencodes](https://github.com/zazencodes)! - tldr: only add a session footer when the reply is at least twice as long as the TLDR would be, so a TLDR is never longer than the text above it. Explicit summary requests are still answered.
+
 ## 0.3.0
 
 ### Minor Changes
