@@ -1,5 +1,19 @@
 # zazencodes-skills
 
+## 0.5.0
+
+### Minor Changes
+
+- [`8f74ae4`](https://github.com/zazencodes/skills/commit/8f74ae48a21dcb609312b58845c67eca093703fe) Thanks [@zazencodes](https://github.com/zazencodes)! - adr: new skill that reads a project's Architecture Decision Records before changing an area and writes one whenever a real decision is made.
+
+- [#6](https://github.com/zazencodes/skills/pull/6) [`ea810a4`](https://github.com/zazencodes/skills/commit/ea810a4b027c892b48d4411a20966b12c1249444) Thanks [@zazencodes](https://github.com/zazencodes)! - ascii-viz: add a linked pattern gallery with reusable diagrams for usage, progress, timelines, flows, comparisons, choices, architecture, and status. Each pattern includes guidance for adapting illustrative examples to verified data.
+
+- [#10](https://github.com/zazencodes/skills/pull/10) [`9b4e4ef`](https://github.com/zazencodes/skills/commit/9b4e4ef3d873ddd2a5632dbc3438141e4b9864bc) Thanks [@zazencodes](https://github.com/zazencodes)! - japanese-only: add an opt-in conversation mode that keeps replies in Japanese until explicitly disabled, while preserving technical literals and required output contracts.
+
+### Patch Changes
+
+- [#9](https://github.com/zazencodes/skills/pull/9) [`0ab8a18`](https://github.com/zazencodes/skills/commit/0ab8a18c3c57377e88f05a2440363197105f8880) Thanks [@zazencodes](https://github.com/zazencodes)! - adr, ascii-viz, codex-image-gen, gemini-web-research, git-commit-conventions, init-agents-md, inspo-swipe-list, random-number-generator, tldr: shorten discovery and Codex UI descriptions while retaining activation rules and routing restrictions.
+
 ## 0.4.0
 
 ### Minor Changes
