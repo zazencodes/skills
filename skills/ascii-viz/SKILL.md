@@ -21,6 +21,13 @@ Answer with ASCII diagrams wherever a picture explains faster than prose: usage 
 - Use real numbers when you have them: label bars with values and percentages, and show the total. Mark unknown values with `?` rather than inventing them.
 - Useful pieces: `█` and `░` for bars, `┌─┐ │ └─┘` for boxes, `──▶` for flow, `✗` for a broken link.
 
+## Pattern gallery
+
+See the [pattern gallery](references/pattern-gallery.md) for reusable
+examples. Choose a pattern only when it helps explain the answer; adapt its
+labels and layout to the user's context. Replace illustrative values with
+verified data, and keep unknown values as `?`.
+
 ## Example
 
 ```
