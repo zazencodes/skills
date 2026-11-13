@@ -1,6 +1,6 @@
 ---
 name: gemini-web-research
-description: Use when the user asks to delegate substantial web research to Gemini CLI or agy. Do not invoke for ordinary research requests or a quick search.
+description: Delegate substantial web research to Gemini CLI or agy only when explicitly requested. Not for ordinary research or quick searches.
 ---
 
 # Gemini Web Research

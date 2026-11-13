@@ -1,6 +1,6 @@
 ---
 name: inspo-swipe-list
-description: The user's inspo swipe list of saved design inspiration. Use when the user asks to use or add to their swipe list or inspo, or when design work could draw on what they have saved.
+description: Use or add to the user's saved design inspiration. Use for swipe list or inspo requests, or design work that could draw on the list.
 ---
 
 # Inspo Swipe List

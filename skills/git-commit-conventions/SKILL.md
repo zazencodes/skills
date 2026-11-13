@@ -1,8 +1,6 @@
 ---
 name: git-commit-conventions
-description: >
-  Commit message and authorship conventions. Use before any commit or push, whether
-  asked for or self-initiated — including "commit this", "commit and push", "/commit".
+description: Make focused commits with short messages and the user's git authorship. Use before every commit or push, including /commit.
 ---
 
 # Git Commit Conventions

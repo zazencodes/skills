@@ -1,6 +1,6 @@
 ---
 name: init-agents-md
-description: Create or refresh a minimal repository-level AGENTS.md for coding agents, keeping it short and repo-specific, and symlinking CLAUDE.md to it. Use when Codex needs to inspect a codebase, draft AGENTS.md, preserve useful details from an existing CLAUDE.md, stop before overwriting an existing AGENTS.md, or symlink CLAUDE.md to AGENTS.md.
+description: Create a minimal, repo-specific AGENTS.md and symlink CLAUDE.md to it. Use to initialize agent instructions; ask before replacing an existing AGENTS.md.
 ---
 
 # Initialize AGENTS.md
