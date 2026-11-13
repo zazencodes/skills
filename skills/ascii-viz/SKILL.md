@@ -1,6 +1,6 @@
 ---
 name: ascii-viz
-description: Use when the user invokes /ascii-viz or $ascii-viz, or asks for answers with ASCII diagrams, charts or visuals. Also applies to later replies in the conversation once active.
+description: Answer with ASCII diagrams and charts. Use for /ascii-viz, $ascii-viz or requests for ASCII visuals; stays active for the conversation.
 ---
 
 # ASCII Viz

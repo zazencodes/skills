@@ -1,6 +1,6 @@
 ---
 name: tldr
-description: Use when the user invokes /tldr or $tldr, sends TLDR or TL;DR as a standalone prompt, or asks to use TLDR for a reply or session. Match case-insensitively. Also applies to later replies while TLDR mode is active.
+description: Summarize replies in a few bullets. Use for /tldr, $tldr, bare TLDR or TL;DR (any case), or TLDR requests; stays active until stopped or limited.
 ---
 
 # TLDR

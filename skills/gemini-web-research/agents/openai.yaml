@@ -1,3 +1,3 @@
 interface:
   display_name: "Gemini Web Research"
-  short_description: "Delegate web research to parallel, source-checked Gemini jobs"
+  short_description: "Run source-checked Gemini research"

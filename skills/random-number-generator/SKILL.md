@@ -1,6 +1,6 @@
 ---
 name: random-number-generator
-description: Generate random numbers with Python standard library utilities. Use when asked for a random number generator agent skill, RNG, random integer, random float, dice roll, random choice, weighted random choices, list shuffle, sample without replacement, secure random integer, cryptographic randomness, secure token, random password candidate, password entropy, or hex token.
+description: Generate random numbers, dice rolls, choices, shuffles, samples and secure tokens with Python. Use for RNG requests, including random password candidates or password entropy.
 license: MIT
 ---
 
