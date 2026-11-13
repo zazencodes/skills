@@ -1,0 +1,4 @@
+interface:
+  display_name: "Japanese Only"
+  short_description: "Keep replies in Japanese until explicitly disabled"
+  default_prompt: "Use $japanese-only to keep your replies in Japanese for this conversation until I explicitly disable the mode."

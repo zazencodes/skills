@@ -19,6 +19,7 @@ Agent skills that I use every day.
 | [`git-commit-conventions`](skills/git-commit-conventions/SKILL.md) | Makes focused commits with short messages and your git authorship. |
 | [`init-agents-md`](skills/init-agents-md/SKILL.md) | Writes a repo-specific `AGENTS.md` and links `CLAUDE.md` to it. |
 | [`inspo-swipe-list`](skills/inspo-swipe-list/SKILL.md) | Saves design inspiration and draws on your swipe list. |
+| [`japanese-only`](skills/japanese-only/SKILL.md) | Keeps replies in Japanese until explicitly disabled. |
 | [`random-number-generator`](skills/random-number-generator/SKILL.md) | Generates random numbers, picks, shuffles, samples, and secure tokens. |
 | [`tldr`](skills/tldr/SKILL.md) | Summarizes replies in a few clear bullets. |
 
@@ -63,6 +64,10 @@ npx skills@latest add zazencodes/skills --skill <name>
 ```
 
 Update later with `npx skills update`.
+
+### Japanese-only replies
+
+Install just this skill with `npx skills@latest add zazencodes/skills --skill japanese-only`, then invoke `/japanese-only` or `$japanese-only` in your agent. Replies stay in Japanese for the current conversation even if later prompts use another language. Say “disable japanese-only” to turn it off. Code, commands, and other necessary technical literals remain unchanged; higher-priority instructions and required output contracts still apply.
 
 ## Setup notes
 
