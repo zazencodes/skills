@@ -1,0 +1,3 @@
+interface:
+  display_name: "Terminal Explainer"
+  short_description: "Illustrated code walkthroughs in the terminal"

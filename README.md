@@ -21,6 +21,7 @@ Agent skills that I use every day.
 | [`init-agents-md`](skills/init-agents-md/SKILL.md) | Writes a repo-specific `AGENTS.md` and links `CLAUDE.md` to it. |
 | [`inspo-swipe-list`](skills/inspo-swipe-list/SKILL.md) | Saves design inspiration and draws on your swipe list. |
 | [`random-number-generator`](skills/random-number-generator/SKILL.md) | Generates random numbers, picks, shuffles, samples, and secure tokens. |
+| [`terminal-explainer`](skills/terminal-explainer/SKILL.md) | Opens illustrated terminal walkthroughs with inspectable source and returns review feedback. |
 | [`tldr`](skills/tldr/SKILL.md) | Summarizes replies in a few clear bullets. |
 
 ## Installation
@@ -64,6 +65,16 @@ npx skills@latest add zazencodes/skills --skill <name>
 ```
 
 Update later with `npx skills update`.
+
+### Try the terminal walkthrough
+
+The demo runs on macOS and Linux with `uv`. From this checkout, run:
+
+```sh
+uv run --script skills/terminal-explainer/scripts/explain.py demo
+```
+
+The demo includes its artwork. Add `--plane` if you use `tmux-agent-plane` and want to open it in the task list. For your own walkthrough, see the [authoring format](skills/terminal-explainer/references/authoring.md), [illustrator settings](skills/terminal-explainer/references/configuration.md), and [design](docs/terminal-explainer.md).
 
 ## Setup notes
 

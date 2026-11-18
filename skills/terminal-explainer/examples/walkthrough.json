@@ -1,0 +1,36 @@
+{
+  "title": "Review · Delivering a reader’s answer",
+  "pages": [
+    {
+      "heading": "When can the agent trust a response?",
+      "body": "You press Submit while the agent is waiting in another terminal. If it opened the response file halfway through a write, it could read a fragment of JSON. This reader gives the finished answer a separate name.",
+      "image": {
+        "file": "handoff.png",
+        "caption": "Left · The reader writes a private draft.   Right · The finished answer becomes visible in one rename."
+      },
+      "evidence": {
+        "file": "scripts/explain.py",
+        "start": 181,
+        "end": 184
+      }
+    },
+    {
+      "heading": "The filename is the handoff",
+      "body": "The waiting agent watches response.json. A crash before the rename leaves it waiting or reports that the reader stopped. After the rename it can read the whole answer, even if the original agent turn ends. Open the evidence to inspect what the waiter actually checks.",
+      "evidence": {
+        "file": "scripts/explain.py",
+        "start": 234,
+        "end": 248
+      },
+      "question": {
+        "id": "inspect_next",
+        "prompt": "Which case would you test next?",
+        "choices": [
+          "The reader closes before submitting",
+          "Two walkthroughs run at once",
+          "The waiting agent restarts"
+        ]
+      }
+    }
+  ]
+}
