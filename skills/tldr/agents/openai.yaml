@@ -1,4 +1,4 @@
 interface:
   display_name: "TLDR"
-  short_description: "Key outcomes, decisions and questions in a few words"
+  short_description: "Summarize replies in a few bullets"
   default_prompt: "Use $tldr to summarize the previous reply and keep TLDR footers active for this session."

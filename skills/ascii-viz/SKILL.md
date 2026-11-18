@@ -1,6 +1,6 @@
 ---
 name: ascii-viz
-description: Use when the user invokes /ascii-viz or $ascii-viz, or asks for answers with ASCII diagrams, charts or visuals. Also applies to later replies in the conversation once active.
+description: Answer with ASCII diagrams and charts. Use for /ascii-viz, $ascii-viz or requests for ASCII visuals; stays active for the conversation.
 ---
 
 # ASCII Viz
@@ -20,6 +20,13 @@ Answer with ASCII diagrams wherever a picture explains faster than prose: usage 
 - Keep lines under about 72 characters so they fit a terminal.
 - Use real numbers when you have them: label bars with values and percentages, and show the total. Mark unknown values with `?` rather than inventing them.
 - Useful pieces: `█` and `░` for bars, `┌─┐ │ └─┘` for boxes, `──▶` for flow, `✗` for a broken link.
+
+## Pattern gallery
+
+See the [pattern gallery](references/pattern-gallery.md) for reusable
+examples. Choose a pattern only when it helps explain the answer; adapt its
+labels and layout to the user's context. Replace illustrative values with
+verified data, and keep unknown values as `?`.
 
 ## Example
 

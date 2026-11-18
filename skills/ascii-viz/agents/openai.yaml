@@ -1,4 +1,4 @@
 interface:
   display_name: "ASCII Viz"
-  short_description: "ASCII diagrams and charts where they help most"
+  short_description: "Explain with ASCII diagrams and charts"
   default_prompt: "Use $ascii-viz to answer with ASCII diagrams where they help."

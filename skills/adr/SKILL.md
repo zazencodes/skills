@@ -1,6 +1,6 @@
 ---
 name: adr
-description: Read and write Architecture Decision Records (ADRs) in docs/adr/. Use when the user types /adr, asks to write an ADR or record a decision, when a real decision is made during work, and before changing an area of a project that has ADRs.
+description: Read and write Architecture Decision Records in docs/adr/. Use for /adr, when decisions are made, and before changing areas covered by ADRs.
 ---
 
 # ADR

@@ -1,6 +1,6 @@
 ---
 name: codex-image-gen
-description: Generate or edit raster images from a text prompt by driving the codex CLI's built-in image tool, and save them to a given path. Use when asked to generate, create, make, draw, render, illustrate, or edit an image, picture, photo, illustration, texture, sprite, icon art, mockup, poster, cover art, thumbnail, logo concept, or transparent cutout; when a variant of an existing image is wanted ("make the sky purple", "same but wider"); or when a build step needs a placeholder or asset image. Also use whenever image generation is requested and no other image backend has been specified.
+description: Generate or edit raster images via Codex CLI and save them to a path. Use for image generation or editing unless another image backend is specified.
 license: MIT
 ---
 
