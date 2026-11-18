@@ -1,6 +1,6 @@
 ---
 name: japanese-only
-description: Use when the user invokes /japanese-only or $japanese-only, explicitly enables Japanese-only replies, or continues a conversation with this mode active. Keep assistant-authored replies in Japanese until explicitly disabled.
+description: Use for /japanese-only, $japanese-only, or explicit requests for Japanese-only replies. Applies throughout the conversation until disabled.
 ---
 
 # Japanese Only
