@@ -52,6 +52,13 @@ class TerminalExplainerTests(unittest.TestCase):
         checkout = self.root / "checkout"
         subprocess.run(["git", "clone", "--quiet", "--local", "--no-hardlinks", str(REPO), str(checkout)], check=True)
         source = checkout / "README.md"
+        with source.open("a") as f:
+            f.write("\nA committed change to review.\n")
+        subprocess.run(
+            ["git", "-c", "user.name=Terminal Explainer Test", "-c", "user.email=test@example.com",
+             "commit", "--quiet", "--no-gpg-sign", "-m", "Add review fixture", "--", "README.md"],
+            cwd=checkout, check=True,
+        )
         lines = source.read_text().splitlines()
         with source.open("a") as f:
             f.write("\nA specific change to review.\n")
@@ -75,6 +82,7 @@ class TerminalExplainerTests(unittest.TestCase):
         self.assertNotIn("diff --git", ev["code"])
         self.assertNotIn("a later edit", ev["code"])
         self.assertEqual(len(pages[1]["evidence"]), 2)
+        self.assertIn("+A committed change to review.", pages[1]["evidence"][0]["code"])
         self.assertNotIn("working tree", pages[1]["evidence"][0]["label"])
 
     def test_generator_receives_one_literal_prompt_and_publishes_once(self):
