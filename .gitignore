@@ -8,3 +8,4 @@ __pycache__/
 dist/
 build/
 node_modules/
+/skills/humanizer-tryhard/references/refresh-status.json

@@ -17,7 +17,7 @@ Agent skills that I use every day.
 | [`codex-image-gen`](skills/codex-image-gen/SKILL.md) | Generates and edits images using your ChatGPT login. |
 | [`gemini-web-research`](skills/gemini-web-research/SKILL.md) | Runs parallel Gemini research jobs and verifies their findings. |
 | [`git-commit-conventions`](skills/git-commit-conventions/SKILL.md) | Makes focused commits with short messages and your git authorship. |
-| [`humanizer-tryhard`](skills/humanizer-tryhard/SKILL.md) | Drafts and edits prose through repeated reviews, with a bundled Wikipedia reference that refreshes every seven days. |
+| [`humanizer-tryhard`](skills/humanizer-tryhard/SKILL.md) | Revises prose in repeated editorial passes using seven focused guides with examples. |
 | [`init-agents-md`](skills/init-agents-md/SKILL.md) | Writes a repo-specific `AGENTS.md` and links `CLAUDE.md` to it. |
 | [`inspo-swipe-list`](skills/inspo-swipe-list/SKILL.md) | Saves design inspiration and draws on your swipe list. |
 | [`random-number-generator`](skills/random-number-generator/SKILL.md) | Generates random numbers, picks, shuffles, samples, and secure tokens. |
@@ -85,4 +85,4 @@ Some skills point at my own setup. Change these after installing:
 
 ## License
 
-[MIT](LICENSE). The Wikipedia reference bundled with `humanizer-tryhard` is adapted from Wikipedia contributors under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/); its header records the source revision and changes.
+[MIT](LICENSE). The `humanizer-tryhard` Wikipedia snapshot and focused guides are adapted from Wikipedia contributors under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Each file records its source revision and changes.
