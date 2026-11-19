@@ -72,6 +72,14 @@ Update later with `npx skills update`.
 
 Install just this skill with `npx skills@latest add zazencodes/skills --skill japanese-only`, then invoke `/japanese-only` or `$japanese-only` in your agent. Replies stay in Japanese for the current conversation even if later prompts use another language. Say “disable japanese-only” to turn it off. Code, commands, and other necessary technical literals remain unchanged; higher-priority instructions and required output contracts still apply.
 
+### Tavily Text
+
+Sets a headline or key phrases with letters that switch between a pixel font and a serif italic inside each word. Install it with `npx skills@latest add zazencodes/skills --skill tavily-text`, then ask your agent to set a headline in Tavily Text.
+
+<p align="center">
+  <img src="docs/assets/tavily-text-preview.png" alt="“Agents After Dark” set in Tavily Text, above a sentence whose key phrases are set the same way" width="800">
+</p>
+
 ### Try the terminal walkthrough
 
 The demo runs on macOS and Linux with `uv`. From this checkout, run:
