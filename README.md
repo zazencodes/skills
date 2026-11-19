@@ -22,6 +22,7 @@ Agent skills that I use every day.
 | [`inspo-swipe-list`](skills/inspo-swipe-list/SKILL.md) | Saves design inspiration and draws on your swipe list. |
 | [`japanese-only`](skills/japanese-only/SKILL.md) | Keeps replies in Japanese until explicitly disabled. |
 | [`random-number-generator`](skills/random-number-generator/SKILL.md) | Generates random numbers, picks, shuffles, samples, and secure tokens. |
+| [`tavily-text`](skills/tavily-text/SKILL.md) | Sets headlines and key phrases in alternating pixel and serif italic letters. |
 | [`terminal-explainer`](skills/terminal-explainer/SKILL.md) | Opens illustrated terminal walkthroughs with inspectable source and returns review feedback. |
 | [`tldr`](skills/tldr/SKILL.md) | Summarizes replies in a few clear bullets. |
 

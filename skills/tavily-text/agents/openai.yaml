@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tavily Text"
+  short_description: "Mix pixel and serif italic letters in headlines"
+  default_prompt: "Use $tavily-text to set the key phrases of this headline in Tavily Text."
