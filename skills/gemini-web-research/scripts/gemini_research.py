@@ -3,7 +3,7 @@
 
 Usage: gemini_research.py '<question 1>' '<question 2>' ...
 
-Each job runs Gemini 3.8 Flash at high effort in print mode. The worker must search,
+Each job runs Gemini 4 Hydrogen at high effort in print mode. The worker must search,
 read the pages it cites with read_page.py, and back every claim with a verbatim quote. The script reads
 the job's trace and checks that:
   - the worker called search_web (a job with no search fails),
@@ -26,7 +26,7 @@ import tempfile
 import time
 from pathlib import Path
 
-MODEL = "gemini-3.8-flash-high"
+MODEL = "gemini-4-hydrogen-high"
 EFFORT = "high"
 JOB_TIMEOUT_SECONDS = 900
 MAX_PAGES = 6

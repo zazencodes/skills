@@ -13,7 +13,7 @@ You are the research lead. Gemini workers do the searching and reading; you brea
 python3 <this skill's directory>/scripts/gemini_research.py '<question 1>' '<question 2>' '<question 3>'
 ```
 
-One call is one round. Each question becomes an independent Gemini 3.8 Flash job at high effort, all running in parallel. A round takes 3 to 6 minutes. Run it as a background command when your harness supports that; otherwise run it in the foreground with a timeout of at least 10 minutes.
+One call is one round. Each question becomes an independent Gemini 4 Hydrogen job at high effort, all running in parallel. A round takes 3 to 6 minutes. Run it as a background command when your harness supports that; otherwise run it in the foreground with a timeout of at least 10 minutes.
 
 Each worker must search the web, read the pages it cites, and back every claim with a verbatim quote. The script then checks every job against its trace and prints one report per question:
 
