@@ -10,8 +10,8 @@
       },
       "evidence": {
         "file": "scripts/explain.py",
-        "start": 181,
-        "end": 184
+        "start": 180,
+        "end": 183
       }
     },
     {
@@ -19,8 +19,8 @@
       "body": "The waiting agent watches response.json. A crash before the rename leaves it waiting or reports that the reader stopped. After the rename it can read the whole answer, even if the original agent turn ends. Open the evidence to inspect what the waiter actually checks.",
       "evidence": {
         "file": "scripts/explain.py",
-        "start": 234,
-        "end": 248
+        "start": 248,
+        "end": 263
       },
       "question": {
         "id": "inspect_next",

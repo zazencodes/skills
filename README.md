@@ -88,7 +88,7 @@ The demo runs on macOS and Linux with `uv`. From this checkout, run:
 uv run --script skills/terminal-explainer/scripts/explain.py demo
 ```
 
-The demo includes its artwork. Add `--plane` if you use `tmux-agent-plane` and want to open it in the task list. For your own walkthrough, see the [authoring format](skills/terminal-explainer/references/authoring.md), [illustrator settings](skills/terminal-explainer/references/configuration.md), and [design](docs/terminal-explainer.md).
+The demo includes its artwork. Inside tmux it opens in a new pane, zoomed to fill the window. For your own walkthrough, see the [authoring format](skills/terminal-explainer/references/authoring.md), [illustrator settings](skills/terminal-explainer/references/configuration.md), and [design](docs/terminal-explainer.md).
 
 ## Setup notes
 

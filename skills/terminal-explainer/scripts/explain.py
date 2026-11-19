@@ -30,7 +30,6 @@ class Model(BaseModel):
 
 
 class Settings(Model):
-    presentation: Literal["terminal", "plane"] = "terminal"
     renderer: Literal["auto", "cells"] = "auto"
     image_height: int = Field(default=15, ge=6, le=40)
     illustration_style: str = "Wide composition, bold silhouettes, few colors. Put labels in the caption."
@@ -193,7 +192,7 @@ def require_run(run):
 def view(run):
     require_run(run)
     if not sys.stdin.isatty() or not sys.stderr.isatty():
-        raise ValueError("the reader needs an interactive terminal; use open --plane or prepare")
+        raise ValueError("the reader needs an interactive terminal; run open inside tmux or prepare")
     sys.dont_write_bytecode = True
     from viewer import Walkthrough
     cfg = settings()
@@ -217,17 +216,32 @@ def plane(*args):
     return subprocess.check_output(["tmux-agent-plane", "task", *args], text=True).strip()
 
 
+def uv_path():
+    if uv := shutil.which("uv"):
+        return uv
+    raise ValueError("terminal-explainer requires uv on PATH")
+
+
+def open_pane(run):
+    # Split the caller's pane and zoom the reader to fill its window; closing it returns to the caller.
+    # A crash keeps the pane open with its error.
+    pane = subprocess.check_output([
+        "tmux", "split-window", "-h", "-t", os.environ["TMUX_PANE"], "-c", str(run), "-P", "-F", "#{pane_id}",
+        "-e", f"XDG_CONFIG_HOME={config_path().resolve().parents[1]}",
+        uv_path(), "run", "--script", str(SCRIPT), "view", str(run),
+        ";", "set-option", "-p", "remain-on-exit", "failed", ";", "resize-pane", "-Z"], text=True).strip()
+    (run / "pane").write_text(pane)
+    return pane
+
+
 def launch(name, cwd, *args):
     tasks = json.loads(plane("list", "--json"))
     if any(task["name"] == name for task in tasks):
         raise ValueError(f"Agent Plane task already exists: {name}")
     # Tasks start in a login shell. Carry the caller's chosen configuration across that boundary.
-    uv = shutil.which("uv")
-    if not uv:
-        raise ValueError("Agent Plane presentation requires uv on PATH")
     config_home = config_path().resolve().parents[1]
     location = plane("start", name, "--cwd", str(cwd), "--", "env", f"XDG_CONFIG_HOME={config_home}",
-                     uv, "run", "--script", str(SCRIPT), *args)
+                     uv_path(), "run", "--script", str(SCRIPT), *args)
     return {"task": name, "location": location}
 
 
@@ -238,11 +252,12 @@ def wait_response(run, timeout):
     while not doc.exists():
         if time.monotonic() >= deadline:
             raise TimeoutError(f"no response yet; resume with wait {run}")
-        if (run / "plane").exists():
-            tasks = json.loads(plane("list", "--json"))
-            alive = any(t["name"] == run.name and t["state"] == "running" for t in tasks)
-            if not alive and not doc.exists():
-                raise ValueError(f"reader stopped without a response; inspect task {run.name}")
+        if (run / "pane").exists():
+            pane = (run / "pane").read_text()
+            state = subprocess.run(["tmux", "display", "-p", "-t", pane, "#{pane_dead}"],
+                                   capture_output=True, text=True)
+            if state.stdout.strip() != "0" and not doc.exists():
+                raise ValueError(f"reader stopped without a response; inspect tmux pane {pane} if it is still open")
         if not doc.exists():
             time.sleep(min(1, max(0, deadline - time.monotonic())))
     return json.loads(doc.read_text())
@@ -281,9 +296,7 @@ def main():
         p = cmds.add_parser(cmd, help="snapshot a walkthrough" + (" and launch its reader" if cmd == "open" else ""))
         p.add_argument("spec", type=Path)
         p.add_argument("--root", type=Path, default=Path.cwd(), help="root of source evidence")
-        if cmd == "open":
-            p.add_argument("--plane", action="store_true", help="open as an Agent Plane task")
-    cmds.add_parser("demo", help="open the bundled illustrated walkthrough").add_argument("--plane", action="store_true")
+    cmds.add_parser("demo", help="open the bundled illustrated walkthrough")
     for cmd in ("view", "wait"):
         p = cmds.add_parser(cmd)
         p.add_argument("run", type=Path)
@@ -319,21 +332,19 @@ def main():
     else:
         demo = a.command == "demo"
         present = a.command != "prepare"
-        use_plane = present and (a.plane or settings().presentation == "plane")
-        if present and not use_plane and not (sys.stdin.isatty() and sys.stderr.isatty()):
-            raise ValueError("use open --plane or prepare a run for an interactive terminal")
+        in_tmux = bool(os.environ.get("TMUX"))
+        if present and not in_tmux and not (sys.stdin.isatty() and sys.stderr.isatty()):
+            raise ValueError("open needs tmux or an interactive terminal; prepare a run and view it in a terminal")
         run = snapshot(DEMO if demo else a.spec.resolve(), SCRIPT.parents[1] if demo else a.root.resolve())
         if not present:
             result = {"run": str(run)}
-        elif use_plane:
-            (run / "plane").touch()
+        elif in_tmux:
             try:
-                launched = launch(run.name, run, "view", str(run))
+                pane = open_pane(run)
             except BaseException:
                 shutil.rmtree(run)
                 raise
-            print(f"Saved walkthrough at {run}", file=sys.stderr)
-            result = {"run": str(run), **launched}
+            result = {"run": str(run), "pane": pane}
         else:
             print(f"Saved walkthrough at {run}", file=sys.stderr)
             result = view(run)

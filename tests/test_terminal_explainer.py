@@ -144,6 +144,9 @@ async def main():
         await pilot.press("o", "k", "escape")
         await pilot.pause()
         assert app.is_running and ta.text == "ok" and app.focused is not ta
+        await pilot.press("escape")
+        await pilot.pause()
+        assert app.is_running
         await pilot.press("n")
         await pilot.pause()
     assert app.return_value == {{"pick": "Beta", "note": "ok"}}

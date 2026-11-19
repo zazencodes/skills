@@ -4,8 +4,7 @@ Run `config` to print the effective settings and their file path. Run `config --
 
 | Setting | Meaning |
 | --- | --- |
-| `presentation` | `terminal` reads in the current TTY. `plane` opens a task in the Agent Plane sidebar. |
-| `renderer` | `auto` uses the image protocol reported by the terminal. `cells` draws pictures with colored half-blocks, useful inside a multiplexer. |
+| `renderer` | `auto` uses the terminal's image protocol. Inside tmux it asks tmux which terminal it draws to: Ghostty and kitty get Kitty graphics, with `allow-passthrough` turned on for the reader's own pane, a terminal tmux reports with Sixel gets Sixel, and any other gets colored half-blocks. `cells` always draws colored half-blocks. |
 | `image_height` | Number of terminal rows available for each figure, from 6 to 40. |
 | `illustration_style` | The illustrator's visual direction. Apply it to agent-authored images too. |
 | `image_command` | Executable and arguments for a local image generator. An empty array leaves artwork to the author. |
@@ -16,7 +15,6 @@ For the `codex-image-gen` companion skill, put the real absolute path to its ins
 
 ```json
 {
-  "presentation": "plane",
   "renderer": "cells",
   "image_height": 16,
   "illustration_style": "One scene, two states. Large shapes and a clear direction of movement.",

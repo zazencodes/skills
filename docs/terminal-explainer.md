@@ -15,8 +15,8 @@ The reader should be able to answer three questions after a review. What changes
 | --- | --- |
 | Skill | Select a review story, author an accurate brief, verify the visual and interpret the feedback. |
 | Bundled CLI and reader | Validate the artifact, snapshot the evidence, display the walkthrough and persist responses. The installable skill carries its own software. |
-| Agent Plane | Host the reader and optional illustration process as named tasks. Its sidebar exposes both and its task log exposes failures. |
-| User configuration | Choose the presentation, renderer, image size, art direction and image command. Provider credentials stay with the chosen generator. |
+| tmux | Host the reader in a focused, zoomed pane split from the agent's. It closes on submit and stays open with the error if the reader crashes. Agent Plane can track an illustration job as a named task. |
+| User configuration | Choose the renderer, image size, art direction and image command. Provider credentials stay with the chosen generator. |
 
 The skill is the entry point because the author has the change, the user's question and the surrounding conversation. A generic completion hook knows a turn ended but usually lacks a review story. Teams already producing the JSON spec can call the same CLI from a hook. A new daemon or Agent Plane plugin would duplicate task tracking.
 
