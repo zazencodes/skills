@@ -1,6 +1,6 @@
 ---
 name: tavily-text
-description: Use when the user asks for Tavily Text, or wants a headline, hero line or key phrase emphasised with letters that alternate between a pixel font and a serif italic inside each word, on a website, landing page, poster or slide.
+description: Use when the user asks for Tavily Text, or wants a headline or key phrase set with letters alternating between a pixel font and a serif italic inside each word.
 ---
 
 # Tavily Text
