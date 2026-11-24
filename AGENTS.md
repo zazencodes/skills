@@ -18,7 +18,7 @@
 
 ## Adding or Removing a Skill
 
-Update `skills/`, the `skills` array in `.claude-plugin/plugin.json`, and the README table together.
+Update `skills/`, the `skills` array in `.claude-plugin/plugin.json`, and the README table together. When retiring a skill, keep its instructions in `archive/<name>/instructions.md` and record the reason and any replacement in `archive/README.md`.
 
 ## Changesets and Releases
 

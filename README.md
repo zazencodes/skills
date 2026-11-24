@@ -19,12 +19,13 @@ Agent skills that I use every day.
 | [`git-commit-conventions`](skills/git-commit-conventions/SKILL.md) | Makes focused commits with short messages and your git authorship. |
 | [`humanizer-tryhard`](skills/humanizer-tryhard/SKILL.md) | Revises prose in repeated editorial passes using seven focused guides with examples. |
 | [`init-agents-md`](skills/init-agents-md/SKILL.md) | Writes a repo-specific `AGENTS.md` and links `CLAUDE.md` to it. |
-| [`inspo-swipe-list`](skills/inspo-swipe-list/SKILL.md) | Saves design inspiration and draws on your swipe list. |
 | [`japanese-only`](skills/japanese-only/SKILL.md) | Keeps replies in Japanese until explicitly disabled. |
 | [`random-number-generator`](skills/random-number-generator/SKILL.md) | Generates random numbers, picks, shuffles, samples, and secure tokens. |
 | [`tavily-text`](skills/tavily-text/SKILL.md) | Sets headlines and key phrases in alternating pixel and serif italic letters. |
 | [`terminal-explainer`](skills/terminal-explainer/SKILL.md) | Opens illustrated terminal walkthroughs with inspectable source and returns review feedback. |
 | [`tldr`](skills/tldr/SKILL.md) | Summarizes replies in a few clear bullets. |
+
+[Archived skills](archive/README.md)
 
 ## Installation
 
@@ -89,12 +90,6 @@ uv run --script skills/terminal-explainer/scripts/explain.py demo
 ```
 
 The demo includes its artwork. Inside tmux it opens in a new pane, zoomed to fill the window. For your own walkthrough, see the [authoring format](skills/terminal-explainer/references/authoring.md), [illustrator settings](skills/terminal-explainer/references/configuration.md), and [design](docs/terminal-explainer.md).
-
-## Setup notes
-
-Some skills point at my own setup. Change these after installing:
-
-- `inspo-swipe-list`: set the list's path (`~/obsidian/AzathHouse/...`) to your own file.
 
 <p align="center">
   <a href="https://zazencodes.com/?utm_source=github&utm_medium=referral&utm_campaign=skills">
