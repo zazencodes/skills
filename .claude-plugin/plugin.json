@@ -1,7 +1,7 @@
 {
   "name": "zazencodes-skills",
   "version": "0.4.0",
-  "description": "Alex Galea's agent skills: architecture decision records, Codex image generation, Gemini web research, git commit conventions, rigorous prose editing, lean AGENTS.md files, a design inspiration swipe list, Japanese-only replies, random number generation, Tavily Text typography, TLDR summaries, ASCII diagrams and illustrated terminal walkthroughs.",
+  "description": "Alex Galea's agent skills: architecture decision records, Codex image generation, Gemini web research, git commit conventions, rigorous prose editing, lean AGENTS.md files, Japanese-only replies, random number generation, Tavily Text typography, TLDR summaries, ASCII diagrams and illustrated terminal walkthroughs.",
   "author": {
     "name": "Alexander Galea",
     "url": "https://zazencodes.com"
