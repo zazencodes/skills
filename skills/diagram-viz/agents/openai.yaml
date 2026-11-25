@@ -1,0 +1,4 @@
+interface:
+  display_name: "Diagram Viz"
+  short_description: "Draw diagrams and timelines in ZazenCodes style"
+  default_prompt: "Use $diagram-viz to draw this as a diagram image."

@@ -16,6 +16,7 @@ Agent skills that I use every day.
 | [`adr`](skills/adr/SKILL.md) | Reads and writes Architecture Decision Records in `docs/adr/`. |
 | [`ascii-viz`](skills/ascii-viz/SKILL.md) | Answers with ASCII diagrams and charts where they help. |
 | [`codex-image-gen`](skills/codex-image-gen/SKILL.md) | Generates and edits images using your ChatGPT login. |
+| [`diagram-viz`](skills/diagram-viz/SKILL.md) | Draws diagrams and timelines as images in the ZazenCodes style. |
 | [`gemini-web-research`](skills/gemini-web-research/SKILL.md) | Runs parallel Gemini research jobs and verifies their findings. |
 | [`git-commit-conventions`](skills/git-commit-conventions/SKILL.md) | Makes focused commits with short messages and your git authorship. |
 | [`humanizer-tryhard`](skills/humanizer-tryhard/SKILL.md) | Revises prose in repeated editorial passes using seven focused guides with examples. |
@@ -80,6 +81,14 @@ Sets a headline or key phrases with letters that switch between a pixel font and
 
 <p align="center">
   <img src="docs/assets/tavily-text-preview.png" alt="“Agents After Dark” set in Tavily Text, above a sentence whose key phrases are set the same way" width="800">
+</p>
+
+### Diagram Viz
+
+Draws architecture diagrams, how-it-works pictures and timelines as PNG images in the ZazenCodes palette, from an HTML template your agent fills in and checks. Install it with `npx skills@latest add zazencodes/skills --skill diagram-viz`, then ask your agent for a diagram. It needs macOS, Google Chrome, and the Inter and JetBrainsMono Nerd Font fonts (`brew install --cask font-inter font-jetbrains-mono-nerd-font`).
+
+<p align="center">
+  <img src="skills/diagram-viz/examples/harness.png" alt="A diagram titled “The harness in one picture”: a Model box and an Agent harness box joined by labelled arrows inside a dashed app outline, with a list of what the harness reaches for" width="800">
 </p>
 
 ### Try the terminal walkthrough

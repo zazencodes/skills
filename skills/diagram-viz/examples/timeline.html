@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>When thinking arrived</title>
+<!-- Page: a 1280x720 frame that matches a ZazenCodes slide. -->
+<style>
+html, body { margin: 0; }
+.frame {
+  width: 1280px; height: 720px; box-sizing: border-box; padding: 56px 72px 84px;
+  display: flex; flex-direction: column; justify-content: center;
+  background: var(--zc-bg); color: var(--zc-body);
+  font-family: "Inter"; -webkit-font-smoothing: antialiased;
+}
+.frame h1 {
+  margin: 0 0 22px; padding-bottom: 19px; border-bottom: 1px solid var(--zc-border);
+  font-family: "JetBrainsMono Nerd Font"; font-feature-settings: "liga" 0, "calt" 0;
+  font-size: 46.5px; font-weight: 800; line-height: 1.2; letter-spacing: -0.035em;
+  color: var(--zc-heading);
+}
+</style>
+<!-- Diagram components and colours. On a Marp slide, paste this block as <style scoped>. -->
+<style>
+.frame, .dg {
+  --zc-bg: #1b2023;           /* page */
+  --zc-surface-code: #262c2f; /* box surface, one step lighter than the page */
+  --zc-border: #414a4f;       /* box and chip borders */
+  --zc-rule: #4e575c;         /* group outlines, spines, brackets, timeline axis */
+  --zc-heading: #ffffff;      /* box titles */
+  --zc-body: #f4f5f6;         /* chip text, sums */
+  --zc-muted: #c6cccf;        /* sublabels, captions, arrows */
+  --zc-h2: #C6AEFF;           /* accent 1, purple: the subject */
+  --zc-h4: #FFA557;           /* accent 2, orange: its counterpart */
+  --zc-pink: #FF2E88;         /* accent 3, pink: a third identity, rarely */
+}
+.dg { position: relative; width: 1136px; line-height: 1.3; font-size: 17px; color: var(--zc-body); text-wrap: balance; }
+.dg > div { position: absolute; box-sizing: border-box; }
+
+/* Boxes, labels and captions */
+.dg .box { border: 1px solid var(--zc-border); border-radius: 10px; background: var(--zc-surface-code); padding: 10px 16px; }
+.dg .box.a1 { border: 2px solid var(--zc-h2); }
+.dg .box.a2 { border: 2px solid var(--zc-h4); }
+.dg .box.a3 { border: 2px solid var(--zc-pink); }
+.dg .t { font-weight: 700; font-size: 21px; color: var(--zc-heading); }
+.dg .t.small { font-size: 19px; }
+.dg .s, .dg .cap { color: var(--zc-muted); font-size: 16px; }
+.dg .sum { color: var(--zc-body); font-size: 19px; text-align: center; }
+
+/* Chips: the parts inside a box */
+.dg .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.dg .chips span { border: 1px solid var(--zc-border); border-radius: 8px; background: var(--zc-bg); padding: 6px 12px; }
+
+/* Rows: a thing's parts, each with a description, stacked inside its box */
+.dg .rows { display: grid; grid-template-columns: max-content 1fr; gap: 10px 24px; margin-top: 14px; }
+.dg .rows > div { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: center; border: 1px solid var(--zc-border); border-radius: 8px; background: var(--zc-bg); padding: 10px 16px; }
+
+/* Group: a dashed outline around things that belong together */
+.dg .group { border: 1px dashed var(--zc-rule); border-radius: 14px; }
+
+/* Arrows: .arr is horizontal (heads .r .l), .varr is vertical (heads .d .u) */
+.dg .arr { height: 2px; background: var(--zc-muted); }
+.dg .varr { width: 2px; background: var(--zc-muted); }
+.dg .arr.r::after, .dg .arr.l::before, .dg .varr.d::after, .dg .varr.u::before { content: ""; position: absolute; border: 6px solid transparent; }
+.dg .arr.r::after { top: -5px; right: -2px; border-left-color: var(--zc-muted); border-right-width: 0; }
+.dg .arr.l::before { top: -5px; left: -2px; border-right-color: var(--zc-muted); border-left-width: 0; }
+.dg .varr.d::after { left: -5px; bottom: -2px; border-top-color: var(--zc-muted); border-bottom-width: 0; }
+.dg .varr.u::before { left: -5px; top: -2px; border-bottom-color: var(--zc-muted); border-top-width: 0; }
+
+/* Bracket: "A = B + C" under the parts it adds up */
+.dg .bracket { height: 12px; border: 2px solid var(--zc-rule); border-top: 0; }
+
+/* Spine list: a column of boxes on a vertical rule, each joined by a tick */
+.dg .spine { width: 2px; background: var(--zc-rule); }
+.dg .item { width: 224px; height: 42px; padding: 8px 14px; }
+.dg .item::before { content: ""; position: absolute; left: -13px; top: 19px; width: 12px; height: 2px; background: var(--zc-rule); }
+
+/* Timeline: an axis across the middle, events alternating above and below */
+.dg .axis { left: 0; right: 0; top: calc(50% - 1px); height: 2px; background: var(--zc-rule); }
+.dg .ev { width: 184px; margin-left: -92px; text-align: center; }
+.dg .ev.up { bottom: 50%; padding-bottom: 32px; }
+.dg .ev.down { top: 50%; padding-top: 32px; }
+.dg .ev::before { content: ""; position: absolute; left: 50%; margin-left: -0.5px; width: 1px; height: 20px; background: var(--zc-rule); }
+.dg .ev.up::before { bottom: 8px; }
+.dg .ev.down::before { top: 8px; }
+.dg .ev::after { content: ""; position: absolute; left: 50%; margin-left: -8px; width: 12px; height: 12px; border-radius: 50%; background: var(--zc-h2); border: 2px solid var(--zc-bg); }
+.dg .ev.up::after { bottom: -8px; }
+.dg .ev.down::after { top: -8px; }
+.dg .ev .d, .dg .ev .n { color: var(--zc-muted); font-size: 15px; }
+.dg .ev .m { color: var(--zc-heading); font-weight: 700; font-size: 19px; }
+</style>
+</head>
+<body>
+<div class="frame">
+<h1>When thinking arrived</h1>
+<div class="dg" style="height: 280px">
+<div class="axis"></div>
+<div class="ev up" style="left:92px"><div class="d">Sep 2024</div><div class="m">OpenAI o1-preview</div><div class="n">First widely released thinking model</div></div>
+<div class="ev down" style="left:376px"><div class="d">Dec 2024</div><div class="m">Gemini 2.0 Flash Thinking</div><div class="n">Google’s first, as an experiment</div></div>
+<div class="ev up" style="left:468px"><div class="d">Jan 2025</div><div class="m">DeepSeek R1</div><div class="n">Open weights, shows its thinking</div></div>
+<div class="ev down" style="left:569px"><div class="d">Feb 2025</div><div class="m">Claude 3.7 Sonnet</div><div class="n">Thinking on or off in one model</div></div>
+<div class="ev up" style="left:654px"><div class="d">Mar 2025</div><div class="m">Gemini 2.5 Pro</div><div class="n">Thinking built in</div></div>
+<div class="ev down" style="left:1044px"><div class="d">Aug 2025</div><div class="m">GPT-5</div><div class="n">Decides how much to think</div></div>
+</div>
+</div>
+</body>
+</html>
