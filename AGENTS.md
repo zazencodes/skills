@@ -18,7 +18,14 @@
 
 ## Adding or Removing a Skill
 
-Update `skills/`, the `skills` array in `.claude-plugin/plugin.json`, and the README table together. When retiring a skill, keep its instructions in `archive/<name>/instructions.md` and record the reason and any replacement in `archive/README.md`.
+Update `skills/`, the `skills` array in `.claude-plugin/plugin.json`, the README table and the zstack listing (see zstack below) together. When retiring a skill, keep its instructions in `archive/<name>/instructions.md` and record the reason and any replacement in `archive/README.md`.
+
+## zstack
+
+- [zstack](https://github.com/zazencodes/zstack) is the hub where people pick these skills; Alex's checkout is `~/oss/zstack`. Its `catalog.toml` has a `[[skills]]` entry per skill (`id`, `repo = "zazencodes/skills"`, `path = "skills/<name>"`, a one-line `pitch`, `starter`, `needs`). Its README skill table links each one as `https://github.com/zazencodes/skills/tree/main/skills/<name>`, with the catalog pitch as its description.
+- Adding, renaming, moving or archiving a skill here updates zstack in the same piece of work: the catalog entry, the README row, and a line under `## [Unreleased]` in its `CHANGELOG.md`. So does changing what a skill does or needs, once its pitch or `needs` stop fitting. Follow zstack's own `AGENTS.md`.
+- Push this repo first so the new paths exist, then push zstack. Open every changed link signed out and confirm it loads.
+- Skills are written in Alex's private `~/agents` repo and copied here. Its `AGENTS.md` points back to this section.
 
 ## Changesets and Releases
 
