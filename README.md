@@ -9,6 +9,8 @@
   <a href="https://zazencodes.com/"><img src="https://img.shields.io/badge/made%20by-ZazenCodes-black" alt="Made by ZazenCodes"></a>
 </p>
 
+> **Part of [zstack](https://github.com/zazencodes/zstack)**, the agentic system I use to run ZazenCodes.
+
 Agent skills that I use every day.
 
 | Skill | What it does |
