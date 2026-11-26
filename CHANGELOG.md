@@ -1,5 +1,39 @@
 # zazencodes-skills
 
+## 1.0.0
+
+### Major Changes
+
+- [`8281219`](https://github.com/zazencodes/skills/commit/8281219a1b18abd3fd3b16314efe87bfdf5d4fc6) Thanks [@zazencodes](https://github.com/zazencodes)! - inspo-swipe-list: archived the Markdown-note skill. The Swipe List app supplies the current skill.
+
+### Minor Changes
+
+- [`8f74ae4`](https://github.com/zazencodes/skills/commit/8f74ae48a21dcb609312b58845c67eca093703fe) Thanks [@zazencodes](https://github.com/zazencodes)! - adr: new skill that reads a project's Architecture Decision Records before changing an area and writes one whenever a real decision is made.
+
+- [#6](https://github.com/zazencodes/skills/pull/6) [`ea810a4`](https://github.com/zazencodes/skills/commit/ea810a4b027c892b48d4411a20966b12c1249444) Thanks [@zazencodes](https://github.com/zazencodes)! - ascii-viz: add a linked pattern gallery with reusable diagrams for usage, progress, timelines, flows, comparisons, choices, architecture, and status. Each pattern includes guidance for adapting illustrative examples to verified data.
+
+- [`47fd4ed`](https://github.com/zazencodes/skills/commit/47fd4ed9bc2127723caf781ca2b179bd44e54d08) Thanks [@zazencodes](https://github.com/zazencodes)! - diagram-viz: new skill that draws architecture diagrams, how-it-works pictures and timelines as PNG images in the ZazenCodes palette. It renders an HTML template with headless Chrome and reports wrapped text, overflow and collisions before you look at the result.
+
+- [`c4325d2`](https://github.com/zazencodes/skills/commit/c4325d296e6561e97e6aa8c93e30b95c69f3e22d) Thanks [@zazencodes](https://github.com/zazencodes)! - humanizer-tryhard: use focused, example-based references and reuse them across the same ordered editorial rounds. Add maintenance guidance for reviewing upstream changes and keeping the pass guides current.
+
+- [`b775c49`](https://github.com/zazencodes/skills/commit/b775c491d02001377cfda58dbed71e01f0ca9327) Thanks [@zazencodes](https://github.com/zazencodes)! - humanizer-tryhard: add rigorous drafting and editing with two full rounds of focused review, a final skeptical read, and a bundled Wikipedia reference that refreshes every seven days while preserving the last good copy offline.
+
+- [#10](https://github.com/zazencodes/skills/pull/10) [`9b4e4ef`](https://github.com/zazencodes/skills/commit/9b4e4ef3d873ddd2a5632dbc3438141e4b9864bc) Thanks [@zazencodes](https://github.com/zazencodes)! - japanese-only: add an opt-in conversation mode that keeps replies in Japanese until explicitly disabled, while preserving technical literals and required output contracts.
+
+- [`ede3a0a`](https://github.com/zazencodes/skills/commit/ede3a0a47f60b12e209285ec82db6c09a75cc0fb) Thanks [@zazencodes](https://github.com/zazencodes)! - tavily-text: new skill for display type whose letters alternate between Geist Pixel Square and Newsreader Italic inside each word, with font, letter-choice, sizing and colour rules.
+
+- [`2be4dc6`](https://github.com/zazencodes/skills/commit/2be4dc6cbf1d5a66ea09ab9cc7f9d9b71fd75b43) Thanks [@zazencodes](https://github.com/zazencodes)! - terminal-explainer: review a change in an illustrated terminal walkthrough, inspect captured source or diffs, and send structured feedback to the agent. Inside tmux the reader opens in its own pane, works entirely from the keyboard, uses the terminal's colors and draws figures with Kitty graphics in Ghostty and kitty. Choose a local image generator and optionally run illustration jobs in tmux-agent-plane.
+
+### Patch Changes
+
+- [`a174880`](https://github.com/zazencodes/skills/commit/a174880c01c405b1e45053066e5aca7399bb9494) Thanks [@zazencodes](https://github.com/zazencodes)! - gemini-web-research: research jobs now run on Gemini 4 Hydrogen at high effort.
+
+- [`d257f1a`](https://github.com/zazencodes/skills/commit/d257f1ae2dc7f40b0a789d4b8457d23c23f5ea0e) Thanks [@zazencodes](https://github.com/zazencodes)! - japanese-only: shorten the discovery description while keeping both invocation forms and the conversation scope.
+
+- [`1f59a69`](https://github.com/zazencodes/skills/commit/1f59a69cc3bf8f9291d086453995cd407b744d78) Thanks [@zazencodes](https://github.com/zazencodes)! - plugin description: no longer lists the design inspiration swipe list, which moved to the archive.
+
+- [#9](https://github.com/zazencodes/skills/pull/9) [`0ab8a18`](https://github.com/zazencodes/skills/commit/0ab8a18c3c57377e88f05a2440363197105f8880) Thanks [@zazencodes](https://github.com/zazencodes)! - adr, ascii-viz, codex-image-gen, gemini-web-research, git-commit-conventions, init-agents-md, inspo-swipe-list, random-number-generator, tldr: shorten discovery and Codex UI descriptions while retaining activation rules and routing restrictions.
+
 ## 0.4.0
 
 ### Minor Changes
